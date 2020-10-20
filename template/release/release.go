@@ -9,7 +9,7 @@ import (
 )
 
 type ReleaseConfig struct {
-	Active bool "hcl:directory,optional"
+	Active bool `hcl:"directory,optional"`
 }
 
 type ReleaseManager struct {
@@ -17,8 +17,8 @@ type ReleaseManager struct {
 }
 
 // Implement Configurable
-func (rm *ReleaseManager) Config() interface{} {
-	return &rm.config
+func (rm *ReleaseManager) Config() (interface{}, error) {
+	return &rm.config, nil
 }
 
 // Implement ConfigurableNotify
